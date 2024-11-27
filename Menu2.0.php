@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<title>Menu</title>
+    <meta charset="utf-8">
+    <title>Menu</title>
 </head>
 <body>
 
-<?php
+<nav>
+    <ul>
+        <li><a href="menu.php">Menu</a></li>
+        <li><a href="me_contacter.php">Me Contacter</a></li>
+    </ul>
+</nav>
+
+<?php 
 
 $plats = [
     ["La Kofta", "Description : Il s’agit de boulettes de viande hachée concoctées avec des épices. Ces boulettes sont traditionnellement roulées et rôties sur un bâton en bois, à la manière d’une brochette.", "14,95$", "https://www.voyageegypte.fr/cdn/eg-public/kofta_egyptien_shutterstock_1940304430-MAX-w1000h600.jpg"],
@@ -29,8 +36,6 @@ $boissons = [
 ];
 ?>
 
-
-
 <h1>Plats</h1>
 <?php foreach ($plats as $plat): ?>
     <section>
@@ -39,8 +44,6 @@ $boissons = [
         <h3><?php echo $plat[1]; ?></h3>
         <h3><?php echo $plat[2]; ?></h3>
     </section>
-
-
 <?php endforeach; ?>
 
 <h1>Desserts</h1>
@@ -51,10 +54,7 @@ $boissons = [
         <h3><?php echo $dessert[1]; ?></h3>
         <h3><?php echo $dessert[2]; ?></h3>
     </section>
-
-
 <?php endforeach; ?>
-
 
 <h1>Boissons</h1>
 <?php foreach ($boissons as $boisson): ?>
@@ -62,8 +62,6 @@ $boissons = [
         <img src="<?php echo $boisson[2]; ?>" width="154" height="142">
         <h3><?php echo $boisson[0]; ?> - <?php echo $boisson[1]; ?></h3>
     </section>
-
-    
 <?php endforeach; ?>
 
 </body>
