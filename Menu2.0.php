@@ -6,14 +6,11 @@
 </head>
 <body>
 
-<nav>
-    <ul>
-        <li><a href="Menu2.0.php">Menu</a></li>
-        <li><a href="me_contacter.php">Me Contacter</a></li>
-    </ul>
-</nav>
+<?php require_once(__DIR__ . '/header.php'); ?>
+
 
 <?php 
+
 
 $plats = [
     ["La Kofta", "Description : Il s’agit de boulettes de viande hachée concoctées avec des épices. Ces boulettes sont traditionnellement roulées et rôties sur un bâton en bois, à la manière d’une brochette.", "14,95$", "https://www.voyageegypte.fr/cdn/eg-public/kofta_egyptien_shutterstock_1940304430-MAX-w1000h600.jpg"],
@@ -63,6 +60,8 @@ $boissons = [
         <h3><?php echo $boisson[0]; ?> - <?php echo $boisson[1]; ?></h3>
     </section>
 <?php endforeach; ?>
+
+<?php require_once(__DIR__ . '/footer.php'); ?>
 
 </body>
 </html>
