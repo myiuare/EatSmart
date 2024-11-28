@@ -5,18 +5,13 @@
     <title>Me Contacter</title>
 </head>
 <body>
+<?php require_once(__DIR__ . '/header.php'); ?>
 
-<nav>
-    <ul>
-        <li><a href="Menu2.0.php">Menu</a></li>
-        <li><a href="me_contacter.php">Me Contacter</a></li>
-    </ul>
-</nav>
 
 <h1>Me Contacter</h1>
 <p>Si vous avez un problème avec votre commande, n'hésitez pas à me contacter :</p>
 
-<form action="confirmation.php" method="post">
+<form action="confirmation.php" method="get">
     <label for="nom">Nom :</label><br>
     <input type="text" id="nom" name="nom" required><br><br>
 
@@ -28,6 +23,8 @@
 
     <input type="submit" value="Envoyer">
 </form>
+<?php require_once(__DIR__ . '/footer.php'); ?>
 
 </body>
 </html>
+
