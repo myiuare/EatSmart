@@ -15,30 +15,38 @@
 
 <?php 
 
+// Connexion à MySQL avec mysqli
+$mysqli = new mysqli('localhost', 'root', '', 'eatsmartprojet');
 
-// on se connecte à MySQL
-$db = mysql_connect('localhost', 'root', '');
+// Vérification de la connexion
+if ($mysqli->connect_error) {
+    die('Erreur de connexion (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
+}
 
-// on sélectionne la base
-mysql_select_db('eatsmartprojet',$db);
+// Définir l'encodage des caractères
+$mysqli->set_charset("utf8");
 
-// on crée la requête SQL
-$sql = 'SELECT nom,prix,description FROM article';
+// Création de la requête SQL
+$sql = 'SELECT nom, prix, description FROM article';
 
-// on envoie la requête
-$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
-
-// on fait une boucle qui va faire un tour pour chaque enregistrement
-while($data = mysql_fetch_assoc($req))
-    {
-    // on affiche les informations de l'enregistrement en cours
-    echo '<b>'.$data['nom'].' '.$data['prix'].'</b> ('.$data['statut'].')';
-    echo ' <i>Description : '.$data['description'].'</i><br>';
+// Exécution de la requête
+if ($result = $mysqli->query($sql)) {
+    // Boucle à travers chaque enregistrement
+    while ($data = $result->fetch_assoc()) {
+        // Affichage des informations de l'enregistrement
+        echo '<b>' . htmlspecialchars($data['nom']) . ' ' . htmlspecialchars($data['prix']) . ' €</b>';
+        echo ' <i>Description : ' . htmlspecialchars($data['description']) . '</i><br>';
     }
 
-// on ferme la connexion à mysql
-mysql_close();
+    // Libération du résultat
+    $result->free();
+} else {
+    // En cas d'erreur dans la requête SQL
+    echo 'Erreur SQL : ' . $mysqli->error;
+}
 
+// Fermeture de la connexion
+$mysqli->close();
 
 ?>
 
