@@ -18,9 +18,11 @@ try {
     $stmt->execute();
 
     while ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo '<b>' . htmlspecialchars($data['nom']) . ' ' . htmlspecialchars($data['prix']) . '</b>';
+        echo '<br> <b>' . htmlspecialchars($data['nom'])  . '<br> </b>' ;
         echo ' <i>Description : ' . htmlspecialchars($data['description']) . '</i><br>';
-        echo '  htmlspecialchars($data['image_url']) . '</i><br>';
+        echo '<br> <b>'. htmlspecialchars($data['prix']) . '</b> <br>';
+
+        echo '<img src="' . $data["image_url"] . '" alt="Image" style="width: 300px; height: auto; margin: 10px;">';
     }
 } catch (PDOException $e) {
     echo 'Erreur de connexion : ' . $e->getMessage();
